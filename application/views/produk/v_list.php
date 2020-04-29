@@ -11,11 +11,10 @@
         <th>STOK</th>
         <th>AKSI</th>
     </tr>
-	<?php
-	$i=1;
+    <?php
     foreach ($data_produk as $produk) {
         echo "<tr>
-              <td>". $i++ ."</td>
+              <td>$produk->id</td>
               <td>$produk->nama_produk</td>
               <td>$produk->tipe_produk</td>
               <td>$produk->harga</td>

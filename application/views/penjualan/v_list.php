@@ -2,7 +2,8 @@
 	<?php echo $this->session->flashdata('info'); ?>
 </font>
 <h1>DATA PRODUK</h1>
-<b>Nomor Transaksi :</b><?= $this->session->userdata('s_nomor_transaksi'); ?>
+NOMOR TRANSAKSI :
+<?= $this->session->userdata('s_nomor_transaksi'); ?>
 <br>
 
 
@@ -26,7 +27,7 @@
                   <td>$produk->tipe_produk</td>
                   <td>$produk->harga</td>
                   <td>$produk->subtotal</td>
-				  <td>" . anchor('penjualan/delete/' . $produk->id, 'Delete') . "</td>
+				  <td>" . anchor('produk/delete/' . $produk->id, 'Delete') . "</td>
                   </tr>";
 		}
 	} else {
