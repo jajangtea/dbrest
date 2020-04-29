@@ -24,8 +24,10 @@ echo form_open_multipart('penjualan/simpan'); ?>
     <tr>
         <td></td>
         <td colspan="2">
-            <?php echo form_submit('submit', 'Simpan'); ?>
-            <?php echo anchor('produk', 'Kembali'); ?></td>
+			<?php echo form_submit('submit', 'Simpan'); ?>
+			<?php echo anchor('penjualan', '| Kembali | '); ?>
+			<?php echo anchor('produk', 'Produk | '); ?>
+		</td>
     </tr>
 </table>
 <?php

@@ -15,7 +15,6 @@ class Penjualan extends CI_Controller
 	{
 		$params = array('nomor_transaksi' => $this->session->userdata('s_nomor_transaksi'));
 		$data['data_penjualan'] = json_decode($this->curl->simple_get($this->api . '/penjualan', $params));
-		//print_r(	$data['data_penjualan'] );
 		$this->load->view('penjualan/v_list', $data);
 	}
 
@@ -25,6 +24,18 @@ class Penjualan extends CI_Controller
 		if ($this->session->userdata('s_nomor_transaksi') == "") {
 			$nomor = json_decode($this->curl->simple_post($this->api . '/penjualan/nomor_transaksi'));
 			$this->session->set_userdata('s_nomor_transaksi', $nomor->nomor_transaksi);
+
+			$data = array(
+				'nomor_transaksi'       =>  $this->session->userdata('s_nomor_transaksi'),
+				'tanggal'        		=> date('d-m-y'),
+			);
+
+			$insert = $this->curl->simple_post($this->api . '/penjualan/simpan_master', $data, array(CURLOPT_BUFFERSIZE => 10));
+			if ($insert) {
+				$this->session->set_flashdata('info', 'data berhasil disimpan.');
+			} else {
+				$this->session->set_flashdata('info', 'data gagal disimpan.');
+			}
 		}
 		redirect('penjualan/index', 'refresh');
 	}
@@ -41,7 +52,7 @@ class Penjualan extends CI_Controller
 	{
 		if (isset($_POST['submit'])) {
 			$nomor_transaksi = $this->session->userdata('s_nomor_transaksi');
-			$params = array('id' => 17);
+			$params = array('id' =>  $this->input->post('id_produk'));
 			$apis = $this->api . '/produk';
 			$produk = json_decode($this->curl->simple_get($apis, $params));
 
