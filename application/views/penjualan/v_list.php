@@ -26,7 +26,7 @@
                   <td>$produk->tipe_produk</td>
                   <td>$produk->harga</td>
                   <td>$produk->subtotal</td>
-				  <td>" . anchor('produk/delete/' . $produk->id, 'Delete') . "</td>
+				  <td>" . anchor('penjualan/delete/' . $produk->id, 'Delete') . "</td>
                   </tr>";
 		}
 	} else {
