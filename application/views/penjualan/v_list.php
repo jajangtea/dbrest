@@ -2,8 +2,7 @@
 	<?php echo $this->session->flashdata('info'); ?>
 </font>
 <h1>DATA PRODUK</h1>
-NOMOR TRANSAKSI :
-<?= $this->session->userdata('s_nomor_transaksi'); ?>
+<b>Nomor Transaksi :</b><?= $this->session->userdata('s_nomor_transaksi'); ?>
 <br>
 
 

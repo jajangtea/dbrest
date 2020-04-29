@@ -11,7 +11,7 @@ Class Produk extends CI_Controller {
     }
     // menampilkan data produk
     function index() {
-        $data['data_produk'] = json_decode($this->curl->simple_get($this->api . '/penjualan'));
+		$data['data_produk'] = json_decode($this->curl->simple_get($this->api . '/produk'));
         $this->load->view('produk/v_list', $data);
     }
     // simpan data produk
